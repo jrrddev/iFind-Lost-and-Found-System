@@ -28,8 +28,7 @@ The system helps students, faculty, and staff to report, view, and track lost an
 ## 🖼️ Preview
 Here’s a screenshot of the homepage:
 
-![iFind Homepage](./assets/homepage.png)  
-*(Replace this path with your actual screenshot file)*
+![iFind Homepage](./Frontend/images/homepage.png)  
 
 ---
 
