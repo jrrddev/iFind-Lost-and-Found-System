@@ -10,6 +10,12 @@ The system helps students, faculty, and staff to report, view, and track lost an
 
 ---
 
+## 🌐 Live Demo
+You can view the live system here:  
+👉 [iFind – Colegio de San Jose Lost and Found System](https://csjifind.page.gd/)
+
+---
+
 ## 🎯 Objectives
 - Provide an easy way to submit reports for lost and found items  
 - Display categorized lists of items (Lost / Found)  
