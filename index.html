@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSJ iFind</title>
+  <link rel="stylesheet" href="Frontend/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <script src="Frontend/script.js" defer></script>
+</head>
+<body>
+  <nav>
+    <div class="container nav-container">
+      <div class="logo-section">
+        <img src="Frontend/csjlogo.png" alt="CSJ Logo" class="nav-logo">
+        <div class="school-name">
+          <h1>Colegio De San Jose</h1>
+          <hr class="divider">
+          <p>iFind: Lost And Found System</p>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#" class="active" data-section="home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#" data-section="report"><i class="fas fa-plus-circle"></i> Report</a></li>
+        <li><a href="#" data-section="browse"><i class="fas fa-list"></i> Browse</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Home Section -->
+    <section id="home" class="active-section">
+      <div class="home-background">
+        <!-- Background image will be handled by CSS -->
+      </div>
+      <div class="home-content">
+        <h1 class="home-title">Lost Something?</h1>
+        <a href="#" data-section="report" class="report-btn">Report Now</a>
+      </div>
+    </section>
+
+    <!-- Report Section -->
+    <section id="report">
+      <h2><i class="fas fa-plus-circle"></i> Report Lost Item</h2>
+      <form id="report-form" onsubmit="handleReportSubmission(event)">
+        <!-- Reporter Details -->
+        <h3 class="form-section-title">Reporter Details</h3>
+        <div class="form-group">
+          <label for="reporter-name">Your Name</label>
+          <input type="text" id="reporter-name" name="reporter_name" required placeholder="Your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="reporter-grade">Grade Level</label>
+          <select id="reporter-grade" name="reporter_grade" required>
+            <option value="">Select Grade</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="reporter-section">Section</label>
+          <input type="text" id="reporter-section" name="reporter_section" required placeholder="Enter your section">
+        </div>
+
+        <!-- Item Details -->
+        <h3 class="form-section-title">Item Details</h3>
+        <div class="form-group">
+          <label for="item-name">Item Name</label>
+          <input type="text" id="item-name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location Lost</label>
+          <input type="text" id="location" name="location" required>
+        </div>
+
+        <div class="form-group">
+          <label for="date_found">Date Lost</label>
+          <input type="date" id="date_found" name="date_found" required>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Upload Image</label>
+          <input type="file" id="image" accept="image/*">
+          <div class="image-preview">
+            <img id="display-image" src="Frontend/images/bottle.png" alt="Item Preview">
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Report</button>
+      </form>
+    </section>
+
+    <!-- Browse Section -->
+    <section id="browse">
+      <h2><i class="fas fa-list"></i> Found Items</h2>
+      <div class="items-grid">
+        <!-- Default Item -->
+        <div class="item-card" data-id="1" data-category="water-bottle" data-location="Classroom">
+          <div class="item-image">
+            <img src="Frontend/images/bottle.png" alt="EXAMPLE TEST IMG">
+          </div>
+          <div class="item-details">
+            <h3>TEST ITEM NAME</h3>
+            <p class="description">TEST ITEM DESCRIPTION</p>
+            <p><i class="fas fa-map-marker-alt"></i> Classroom</p>
+            <p><i class="fas fa-calendar-alt"></i> <span class="date">July 20, 2025</span></p>
+            <button class="claim-btn">Claim Item</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Claim Popup -->
+  <div id="notification-popup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn">&times;</span>
+      <h3><i class="fas fa-envelope"></i> Claim This Item</h3>
+      <form id="claim-form">
+        <div class="form-group">
+          <label for="student-name">Your Name</label>
+          <input type="text" id="student-name" required placeholder="Your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="student-grade">Grade Level</label>
+          <select id="student-grade" required>
+            <option value="">Select Grade</option>
+            <option value="7">Grade 7</option>
+            <option value="8">Grade 8</option>
+            <option value="9">Grade 9</option>
+            <option value="10">Grade 10</option>
+            <option value="11">Grade 11</option>
+            <option value="12">Grade 12</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="student-section">Section</label>
+          <input type="text" id="student-section" required placeholder="Enter your section">
+        </div>
+
+        <div class="form-group">
+          <label for="claim-message">Proof of Ownership</label>
+          <textarea id="claim-message" rows="4" required placeholder="Please describe the item in detail and provide any proof of ownership (e.g., identifying marks, when and where you lost it, etc.)"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Claim</button>
+      </form>
+      <div id="form-status"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About CSJ iFind</h4>
+          <p>A Lost and Found System for Colegio De San Jose students. Helping you find your lost items efficiently.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact Developer</h4>
+          <p><i class="fas fa-envelope"></i> Email: jverana598@gmail.com</p>
+          <p><i class="fas fa-phone"></i> Contact Number: 09560658812</p>
+        </div>
+
+        <div class="footer-section social-links">
+          <h4>Get in Touch</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/share/16x5teNANk/" target="_blank" class="social-icon">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/jrrd_nyts?igsh=MXFjbm5vYmNtOGV5ag==" target="_blank" class="social-icon">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/jrrddev" target="_blank" class="social-icon">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CSJ iFind - Developed by Jared Daniel Verana | 12 ICT Student</p>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>
